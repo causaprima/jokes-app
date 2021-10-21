@@ -20,6 +20,11 @@ type data = {
     lang: string
 }
 
+/**
+ * Output a joke of a given type to the consol (using .then/.catch)
+ * @param jokeType - Joke category/type ('any', 'programming', 'misc', 'dark', 'pun', 'spooky', 'christmas')
+ * @returns Nothing
+ */
 export function getJokeWithThen(jokeType: string): void {
     axios.get<data>('https://v2.jokeapi.dev/joke/' + jokeType)
         .then((response) => response.data)
@@ -34,6 +39,11 @@ export function getJokeWithThen(jokeType: string): void {
         .catch(err => console.log(err))
 }
 
+/**
+ * Output a joke of a given type to the consol (using async/await)
+ * @param jokeType - Joke category/type ('any', 'programming', 'misc', 'dark', 'pun', 'spooky', 'christmas')
+ * @returns Promise
+ */
 export async function getJokeWithAsync(jokeType: string): Promise<void> {
 
     try {
