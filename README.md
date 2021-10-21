@@ -25,7 +25,7 @@ $ npx ts-node src/index.ts joke -f async
 $ node src/index.ts joke dark
 
 # to get help with joke
-npx ts-node src/index.ts joke --help
+$ npx ts-node src/index.ts joke --help
 
 
 # to start benchmark
