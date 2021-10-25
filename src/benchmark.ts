@@ -1,9 +1,10 @@
 import get from 'axios'
+import { getJokeWithThen, getJokeWithAsync } from './joke'
 
 export async function parseJokesTest1(n: number) {
     const startTime = performance.now()
     for (let i = 0; i < n; i++) {
-       await get('https://v2.jokeapi.dev/joke/Any')
+       await getJokeWithAsync('any', false)
     }
     const endTime = performance.now()
     const resultTime = endTime - startTime
@@ -11,11 +12,11 @@ export async function parseJokesTest1(n: number) {
 }
 
 export function parseJokesTest2(n: number) {
-    let urls = new Array<string>(n)
-    urls.fill('https://v2.jokeapi.dev/joke/Any')
+    let types = new Array<string>(n)
+    types.fill('any')
 
     const startTime = performance.now()
-    Promise.all(urls.map(url => get(url)))
+    Promise.all(types.map(type => getJokeWithThen(type, false)))
     const endTime = performance.now()
     const resultTime = endTime - startTime
     console.log(`test2 (using 'promise.all') done in ${resultTime}`)
